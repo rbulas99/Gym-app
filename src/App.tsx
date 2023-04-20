@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import { MantineProvider, createEmotionCache } from '@mantine/core';
 import Header from './components/Header';
+import { Outlet } from 'react-router-dom';
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -25,9 +26,9 @@ function App() {
 
         }}
       >
-        <Header setDarkMode={() => setDarkMode(!darkMode)} darkMode={darkMode} />
+        <Header darkMode={darkMode} setDarkMode={() => setDarkMode(!darkMode)} />
         <main>
-          
+          <Outlet />
         </main>
       </MantineProvider>
     </>
