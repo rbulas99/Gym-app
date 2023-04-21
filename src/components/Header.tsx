@@ -1,7 +1,9 @@
 import { ActionIcon, Button, Header as MantineHeader, createStyles } from '@mantine/core';
+
 import { GiMuscleUp, GiMoon, } from 'react-icons/gi';
 import { BsFillSunFill } from "react-icons/bs";
-import { AiFillHome, AiFillSetting } from "react-icons/Ai";
+import { AiFillHome } from "react-icons/Ai";
+import { FiLogOut } from "react-icons/fi";
 import { BsFillCalendar2WeekFill, BsFillPlusSquareFill } from "react-icons/bs";
 
 import { useNavigate } from 'react-router-dom';
@@ -24,21 +26,14 @@ const useStyles = createStyles(() => ({
       padding: '0',
     }
   }
-
-
 }));
-
 
 const Header: React.FC<{ darkMode: boolean; setDarkMode: () => void; }> = ({ darkMode, setDarkMode }) => {
   const navigate = useNavigate();
   const { classes } = useStyles();
 
-
-  console.log(window.location.pathname);
-
-
   return (
-    <MantineHeader height={'4em'} className='flex items-center justify-between px-6 lg:px-16'>
+    <MantineHeader height={'4em'} className='sticky flex items-center justify-between px-6 lg:px-16'>
       <div className='flex'>
 
         <GiMuscleUp size="1.5em" /> <p className='hidden md:block'>GYM-APP</p>
@@ -70,7 +65,7 @@ const Header: React.FC<{ darkMode: boolean; setDarkMode: () => void; }> = ({ dar
             <li className={window.location.pathname === "/edit-user" ? classes.currentItem : classes.navItem}>
               <Button variant='subtle' color='dark' onClick={() => navigate('/edit-user')}>
                 <div className='flex flex-col item-center items-center'>
-                  <AiFillSetting size='1rem' /><p className='hidden lg:block'>Edit User</p>
+                  <FiLogOut size='1rem' /><p className='hidden lg:block'>Change User</p>
                 </div>
               </Button>
             </li>
