@@ -12,16 +12,13 @@ const SelectUser = () => {
   const userContext = useContext(UserContext);
   const users = useGetUsers();
 
-
   const signIn = () => {
     localStorage.setItem('userId', value ? value : '');
     if (userContext) {
       userContext.setUserId(Number(value));
     }
     navigate('/');
-
   };
-
 
   const usersSelectList = users.data?.map((user) => (
     { value: user.userId.toString(), label: user.username }

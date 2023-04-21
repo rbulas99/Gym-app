@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useGetWorkoutDetails } from '../../api/workout/getWorkoutDetails';
+import { TLastWorkout } from '../../api/workout/getWorkouts';
 
 import { Button, Card, Collapse, Group } from '@mantine/core';
 import WorkoutExercise from './WorkoutExercise';
-import { TLastWorkout } from '../../api/workout/getWorkouts';
 
 const WorkoutHistoryElement: React.FC<{ workout: TLastWorkout; }> = ({ workout }) => {
   const [opened, setOpened] = useState(false);
@@ -17,15 +17,12 @@ const WorkoutHistoryElement: React.FC<{ workout: TLastWorkout; }> = ({ workout }
           <div className='text-xs'>{workout?.date.split('T')[0]}</div>
         </div>
         {!opened ? <Button variant='subtle' color='gray' onClick={() => setOpened(true)}>Szczegóły</Button> : <Button variant='subtle' color='gray' onClick={() => setOpened(false)}>Ukryj</Button>}
-
       </Group>
       <Collapse in={opened} >
         {workoutExercises.data?.map(exercise => (
           <WorkoutExercise key={exercise.exerciseId} exercise={exercise} />
-
         ))}
       </Collapse>
-
     </Card>
   );
 };
