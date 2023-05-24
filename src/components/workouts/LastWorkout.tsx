@@ -12,7 +12,7 @@ const LastWorkout:React.FC<{lastWorkout: TLastWorkout | undefined}> = ({lastWork
           </div>
           <div className='flex gap-3 w-2/3'>
             <KeyVal label='Data' value={lastWorkout ? lastWorkout?.date.split('T')[0] : '-'} />
-            <KeyVal label='Liczba ćwiczeń:' value={'5'} />
+            <KeyVal label='Liczba ćwiczeń:' value={lastWorkout ? lastWorkout?.numberOfExercises.toString() : "-"} />
           </div>
         </div>
     </Card>

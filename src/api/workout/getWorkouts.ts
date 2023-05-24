@@ -7,6 +7,7 @@ export type TLastWorkout = {
   userId: number
   date:string
   name: string
+  numberOfExercises: number
 };
 
 export const getWorkouts = async (userId: number | undefined | null) => {

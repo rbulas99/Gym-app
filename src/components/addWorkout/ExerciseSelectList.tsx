@@ -10,6 +10,8 @@ const ExerciseSelectList: React.FC<{ value: string | null, setValue: Dispatch<Se
     );
   }, []);
 
+  console.log(!value || isLoading)
+
   const selectListDataSet = selectList.map((item) => (
     { value: item.exerciseTypeId.toString(), label: item.name }
   ));
@@ -24,7 +26,7 @@ const ExerciseSelectList: React.FC<{ value: string | null, setValue: Dispatch<Se
         onChange={setValue}
         className='w-full'
       />
-      <Button onClick={addExercise}  disabled={!value && isLoading} >Dodaj ćwiczenie</Button>
+      <Button onClick={addExercise}  disabled={!value || isLoading} >Dodaj ćwiczenie</Button>
     </div>
   );
 };
