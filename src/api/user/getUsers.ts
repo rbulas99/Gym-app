@@ -6,7 +6,7 @@ import { TUser } from './getUser';
 export const getUsers = async () => {
   const {data} = await axios({
     method: 'get',
-    url: `${API_URL}/user/all`,
+    url: `${API_URL}/users`,
 });
 return data
 }

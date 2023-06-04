@@ -1,18 +1,12 @@
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import { getExerciseSelectList, TExerciseSelectList } from '../../api/workout/getExerciseSelectList';
+import { Dispatch, SetStateAction } from 'react';
 import { Button, Select } from '@mantine/core';
+import {  useGetExerciseList } from '../../api/workout/getExerciseList';
 
 const ExerciseSelectList: React.FC<{ value: string | null, setValue: Dispatch<SetStateAction<string | null>>; addExercise: () => void, isLoading: boolean} > = ({ value, setValue, addExercise, isLoading }) => {
-  const [selectList, setSelectList] = useState<TExerciseSelectList[]>([]);
-  useEffect(() => {
-    getExerciseSelectList().then(response =>
-      setSelectList(response.data)
-    );
-  }, []);
+  const selectList = useGetExerciseList();
+ 
 
-  console.log(!value || isLoading)
-
-  const selectListDataSet = selectList.map((item) => (
+  const selectListDataSet = selectList.data?.map((item) => (
     { value: item.exerciseTypeId.toString(), label: item.name }
   ));
   return (
@@ -21,7 +15,7 @@ const ExerciseSelectList: React.FC<{ value: string | null, setValue: Dispatch<Se
         searchable
         clearable
         placeholder="Dodaj ćwiczenie"
-        data={selectListDataSet}
+        data={selectListDataSet ? selectListDataSet : []}
         value={value}
         onChange={setValue}
         className='w-full'

@@ -1,4 +1,4 @@
-import { TWorkoutExercise } from '../../api/workout/getWorkoutDetails';
+import { TWorkoutExercise } from '../../api/workout/getWorkout';
 import WorkoutExerciseListItem from './WorkoutExerciseListItem';
 
 const WorkoutExercisesList:React.FC<{exercises: TWorkoutExercise[] | undefined; refetch: () => void}> = ({exercises, refetch}) => {

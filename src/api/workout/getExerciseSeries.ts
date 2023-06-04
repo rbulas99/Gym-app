@@ -14,7 +14,7 @@ export type TExerciseSerie = {
 export const getExerciseSeries = async (exerciseId: number | undefined) => {
   const {data} = await axios({
     method: "get",
-    url: `${API_URL}/workoutdetails/exercise/${exerciseId}`,
+    url: `${API_URL}/workouts/${exerciseId}/series`,
   });
   return data;
 };

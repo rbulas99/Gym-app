@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { useGetWorkoutDetails } from '../../api/workout/getWorkoutDetails';
 import { TLastWorkout } from '../../api/workout/getWorkouts';
 
 import { Button, Card, Collapse, Group } from '@mantine/core';
 import WorkoutExercise from './WorkoutExercise';
+import { useGetWorkout } from '../../api/workout/getWorkout';
 
 const WorkoutHistoryElement: React.FC<{ workout: TLastWorkout; }> = ({ workout }) => {
   const [opened, setOpened] = useState(false);
-  const workoutExercises = useGetWorkoutDetails(workout.workoutId);
+  const workoutExercises = useGetWorkout(workout.workoutId);
 
   return (
     <Card shadow='lg' radius='md' m='xs' my="lg" p='lg'>

@@ -4,22 +4,26 @@ import { API_URL } from "../../env";
 
 export type TWorkoutExercise = {
   exerciseId: number,
-  name: string
+  exerciseType: {
+    exerciseTypeId: string
+    name: string
+  }
 }
 
-export const getWorkoutDetails = async (workoutId: number | undefined) => {
+export const getWorkout = async (workoutId: number | undefined) => {
+  !workoutId && Promise.reject('workoutId is undefined')
   const {data} = await axios({
     method: "get",
-    url: `${API_URL}/workoutdetails/${workoutId}`,
+    url: `${API_URL}/workouts/${workoutId}`,
   });
   return data;
 };
 
-export const useGetWorkoutDetails = (workoutId: number | undefined ) =>
+export const useGetWorkout = (workoutId: number | undefined ) =>
 {
   const workouts = useQuery({
     queryKey: ["getWorkoutDetails", workoutId],
-    queryFn: () => getWorkoutDetails(workoutId),
+    queryFn: () => getWorkout(workoutId),
   }) as UseQueryResult<TWorkoutExercise[]>;
   return workouts;
 }

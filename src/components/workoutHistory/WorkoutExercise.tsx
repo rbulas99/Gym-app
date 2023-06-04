@@ -1,5 +1,5 @@
 import { useGetExerciseSeries } from '../../api/workout/getExerciseSeries';
-import { TWorkoutExercise } from '../../api/workout/getWorkoutDetails';
+import { TWorkoutExercise } from '../../api/workout/getWorkout';
 import { createStyles } from '@mantine/core';
 
 const useStyles = createStyles(() => ({
@@ -23,7 +23,7 @@ const WorkoutExercise: React.FC<{ exercise: TWorkoutExercise; }> = ({ exercise }
 
   return (
     <div className={classes.container}>
-      <div>{exercise.name}</div>
+      <div>{exercise.exerciseType.name}</div>
       {exercisesSeries.data?.map((serie, index) => (
         <div className={classes.serie} key={serie.serieId}>
           <p>Seria {index + 1}</p>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useGetExerciseSeries } from '../../api/workout/getExerciseSeries';
 import { deleteSerieFromExercise } from '../../api/workout/deleteSerieFromExercise';
-import { TWorkoutExercise } from '../../api/workout/getWorkoutDetails';
+import { TWorkoutExercise } from '../../api/workout/getWorkout';
 import { deleteExercise } from '../../api/workout/deleteExercise';
 
 import { Button, Collapse, createStyles } from '@mantine/core';
@@ -34,7 +34,7 @@ const WorkoutExercisesListItem: React.FC<{ exercise: TWorkoutExercise; refetch: 
     <div>
       <div className={classes.container}>
         <div className='w-full flex justify-between'>
-          {exercise.name}
+          {exercise.exerciseType.name}
           <DeleteButton onClick={() => deleteExercise(exercise.exerciseId).then(() => refetch())} disabled={!!exerciseSeries.data?.length} />
         </div>
         <div className='w-full flex justify-between my-4 lg:justify-end'>

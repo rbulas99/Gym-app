@@ -13,7 +13,7 @@ const ViewAddWorkout = () => {
 
   return (
     <>
-    <LoadingOverlay visible={lastWorkouts.isFetching} />
+    <LoadingOverlay visible={lastWorkouts.isLoading} />
       <main className='w-full'>
         <div className='w-full text-center my-4 text-lg'>Dodaj trening</div>
         <AddWorkout refetch={() => lastWorkouts.refetch()} />

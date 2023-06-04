@@ -14,7 +14,7 @@ export const getWorkouts = async (userId: number | undefined | null) => {
   !userId && Promise.reject("");
   const {data} = await axios({
     method: "get",
-    url: `${API_URL}/workout/user/${userId}`,
+    url: `${API_URL}/users/${userId}/workouts`,
   });
   return data;
 };

@@ -13,7 +13,7 @@ export const getUser = async (userId: number | undefined | null) => {
   !userId && Promise.reject("");
   const { data } = await axios({
     method: "get",
-    url: `${API_URL}/user/${userId}`,
+    url: `${API_URL}/users/${userId}`,
   });
   return data;
 };

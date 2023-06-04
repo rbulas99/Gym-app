@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { useMutation } from '@tanstack/react-query';
-import { useGetWorkoutDetails } from '../../api/workout/getWorkoutDetails';
 import { postAddExerciseToWorkout } from '../../api/workout/postAddExerciseToWorkout';
 import { TLastWorkout } from '../../api/workout/getWorkouts';
 
@@ -10,10 +9,11 @@ import { showNotification } from '@mantine/notifications';
 import WorkoutExercisesList from './WorkoutExercisesList';
 import ExerciseSelectList from './ExerciseSelectList';
 import KeyVal from '../common/KeyVal';
+import { useGetWorkout } from '../../api/workout/getWorkout';
 
 const CurrentWorkout: React.FC<{ lastWorkout: TLastWorkout | undefined; }> = ({ lastWorkout }) => {
   const [value, setValue] = useState<string | null>(null);
-  const exercises = useGetWorkoutDetails(lastWorkout?.workoutId);
+  const exercises = useGetWorkout(lastWorkout?.workoutId);
 
   const onSuccess = () => {
     exercises.refetch();

@@ -12,7 +12,7 @@ const ViewWorkoutHistory = () => {
   const lastWorkouts = useGetWorkouts(userContext?.userId);
   return (
     <>
-      <LoadingOverlay visible={lastWorkouts.isFetching} />
+      <LoadingOverlay visible={lastWorkouts.isLoading} />
       <main className='w-full'>
         <div className='w-full text-center my-4 text-lg'>Historia treningów</div>
         <WorkoutHistoryList lastWorkouts={lastWorkouts.data} />
