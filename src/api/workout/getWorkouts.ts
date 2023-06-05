@@ -2,12 +2,11 @@ import { useQuery, UseQueryResult } from '@tanstack/react-query';
 import axios from "axios";
 import { API_URL } from "../../env";
 
-export type TLastWorkout = {
+export type TWorkouts = {
   workoutId: number
   userId: number
   date:string
   name: string
-  numberOfExercises: number
 };
 
 export const getWorkouts = async (userId: number | undefined | null) => {
@@ -24,6 +23,6 @@ export const useGetWorkouts = (userId: number | undefined | null) =>
   const workouts = useQuery({
     queryKey: ["getWorkout", userId],
     queryFn: () => getWorkouts(userId),
-  }) as UseQueryResult<TLastWorkout[]>;
+  }) as UseQueryResult<TWorkouts[]>;
   return workouts;
 }

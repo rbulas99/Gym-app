@@ -1,23 +1,24 @@
-import { createStyles } from '@mantine/core';
+import { createStyles } from "@mantine/core";
 
 const useStyles = createStyles(() => ({
   wrapper: {
-    borderLeft: '1px gray solid',
+    borderLeft: "1px gray solid",
     height: 80,
-    padding: '1em',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    padding: "1em",
+    marginLeft: "auto",
+    marginRight: "auto",
   },
   label: {
-    fontWeight: 'lighter'
+    fontWeight: "lighter",
   },
   value: {
-    fontWeight: 'normal'
-  }
+    fontWeight: "normal",
+  },
 }));
 
-const KeyVal: React.FC<{ label: string, value: string; }> = ({ label, value }) => {
+type KeyValProps = { label: string; value: string };
 
+const KeyVal: React.FC<KeyValProps> = ({ label, value }) => {
   const { classes } = useStyles();
 
   return (

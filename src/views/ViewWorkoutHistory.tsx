@@ -5,7 +5,7 @@ import { useGetWorkouts } from '../api/workout/getWorkouts';
 
 import { LoadingOverlay } from '@mantine/core';
 
-import WorkoutHistoryList from '../components/workoutHistory/WorkoutHistoryList';
+import WorkoutHistoryElement from '../components/workoutHistory/WorkoutHistoryElement';
 
 const ViewWorkoutHistory = () => {
   const userContext = useContext(UserContext);
@@ -15,7 +15,9 @@ const ViewWorkoutHistory = () => {
       <LoadingOverlay visible={lastWorkouts.isLoading} />
       <main className='w-full'>
         <div className='w-full text-center my-4 text-lg'>Historia treningów</div>
-        <WorkoutHistoryList lastWorkouts={lastWorkouts.data} />
+        {lastWorkouts.data?.map(workout => (
+        <WorkoutHistoryElement key={workout.workoutId} workoutId={workout.workoutId} />
+      ))}
       </main></>
 
   );

@@ -9,15 +9,15 @@ import { UserContext } from '../context/userContext';
 
 const ViewAddWorkout = () => {
   const userContext = useContext(UserContext);
-  const lastWorkouts = useGetWorkouts(userContext?.userId);
+  const {data, refetch, isFetching} = useGetWorkouts(userContext?.userId);
 
   return (
     <>
-    <LoadingOverlay visible={lastWorkouts.isLoading} />
+    <LoadingOverlay visible={isFetching} />
       <main className='w-full'>
         <div className='w-full text-center my-4 text-lg'>Dodaj trening</div>
-        <AddWorkout refetch={() => lastWorkouts.refetch()} />
-        {lastWorkouts.data?.length ? <CurrentWorkout lastWorkout={lastWorkouts.data?.[0]} /> : null}
+        <AddWorkout refetch={() => refetch()} />
+        {data?.length ? <CurrentWorkout workout={data?.[0]} /> : null}
 
       </main>
     </>

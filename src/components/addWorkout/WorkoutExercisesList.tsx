@@ -1,11 +1,23 @@
-import { TWorkoutExercise } from '../../api/workout/getWorkout';
-import WorkoutExerciseListItem from './WorkoutExerciseListItem';
+import { TExercise } from "../../api/workout/getWorkout";
+import WorkoutExerciseListItem from "./WorkoutExerciseListItem";
 
-const WorkoutExercisesList:React.FC<{exercises: TWorkoutExercise[] | undefined; refetch: () => void}> = ({exercises, refetch}) => {
+type WorkoutExercisesListProps = {
+  exercises: TExercise[] | undefined;
+  refetch: () => void;
+};
+
+const WorkoutExercisesList: React.FC<WorkoutExercisesListProps> = ({ exercises, refetch }) => {
   return (
-    <>{exercises?.map(exercise => (
-      <WorkoutExerciseListItem key={exercise.exerciseId} exercise={exercise} refetch={refetch}  />))}</>
-  )
-}
+    <>
+      {exercises?.map((exercise) => (
+        <WorkoutExerciseListItem
+          key={exercise.exerciseId}
+          exercise={exercise}
+          refetch={refetch}
+        />
+      ))}
+    </>
+  );
+};
 
-export default WorkoutExercisesList
+export default WorkoutExercisesList;

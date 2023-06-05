@@ -1,16 +1,28 @@
-import { Dispatch, SetStateAction } from 'react';
-import { Button, Select } from '@mantine/core';
-import {  useGetExerciseList } from '../../api/workout/getExerciseList';
+import { Dispatch, SetStateAction } from "react";
+import { Button, Select } from "@mantine/core";
+import { useGetExerciseList } from "../../api/workout/getExerciseList";
 
-const ExerciseSelectList: React.FC<{ value: string | null, setValue: Dispatch<SetStateAction<string | null>>; addExercise: () => void, isLoading: boolean} > = ({ value, setValue, addExercise, isLoading }) => {
-  const selectList = useGetExerciseList();
- 
+type ExerciseSelectListProps = {
+  value: string | null;
+  setValue: Dispatch<SetStateAction<string | null>>;
+  addExercise: () => void;
+  isLoading: boolean;
+};
 
-  const selectListDataSet = selectList.data?.map((item) => (
-    { value: item.exerciseTypeId.toString(), label: item.name }
-  ));
+const ExerciseSelectList: React.FC<ExerciseSelectListProps> = ({
+  value,
+  setValue,
+  addExercise,
+  isLoading,
+}) => {
+  const { data } = useGetExerciseList();
+
+  const selectListDataSet = data?.map((item) => ({
+    value: item.exerciseTypeId.toString(),
+    label: item.name,
+  }));
   return (
-    <div className='flex w-full my-4 py-4'>
+    <div className="flex w-full my-4 py-4">
       <Select
         searchable
         clearable
@@ -18,9 +30,11 @@ const ExerciseSelectList: React.FC<{ value: string | null, setValue: Dispatch<Se
         data={selectListDataSet ? selectListDataSet : []}
         value={value}
         onChange={setValue}
-        className='w-full'
+        className="w-full"
       />
-      <Button onClick={addExercise}  disabled={!value || isLoading} >Dodaj ćwiczenie</Button>
+      <Button onClick={addExercise} disabled={!value || isLoading}>
+        Dodaj ćwiczenie
+      </Button>
     </div>
   );
 };

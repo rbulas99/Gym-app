@@ -15,7 +15,9 @@ const schema = yup.object().shape({
   name: yup.string().required("Podaj nazwę treningu"),
 }).required();
 
-const AddWorkout: React.FC<{ refetch: () => void; }> = ({ refetch }) => {
+type AddWorkoutProps = { refetch: () => void; }
+
+const AddWorkout: React.FC<AddWorkoutProps> = ({ refetch }) => {
   const userContext = useContext(UserContext);
   const onSuccess = () => {
     refetch();
@@ -45,7 +47,6 @@ const AddWorkout: React.FC<{ refetch: () => void; }> = ({ refetch }) => {
         <form onSubmit={handleSubmit(data => mutate(data))} className='flex justify-between'>
           <TextInput {...register("name")} placeholder='Nazwa Treningu' className='w-full' />
           <Button type="submit">Dodaj trening</Button>
-
         </form>
       </Card>
     </div >

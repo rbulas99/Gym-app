@@ -1,9 +1,13 @@
-import { Button } from '@mantine/core';
-import { AiFillDelete } from 'react-icons/Ai';
+import { Button } from "@mantine/core";
+import { AiFillDelete } from "react-icons/Ai";
 
-const DeleteButton:React.FC<{onClick: () => void, disabled: boolean}> = ({onClick, disabled}) => {
+type DeleteButtonProps = { onClick: () => void; disabled: boolean };
+
+const DeleteButton: React.FC<DeleteButtonProps> = ({ onClick, disabled }) => {
   return (
-    <Button variant='outline' color='red' onClick={onClick} disabled={disabled}><AiFillDelete /></Button>
-  )
-}
+    <Button variant="outline" color="red" onClick={onClick} disabled={disabled}>
+      <AiFillDelete />
+    </Button>
+  );
+};
 export default DeleteButton;

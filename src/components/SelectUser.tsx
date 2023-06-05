@@ -23,7 +23,6 @@ const SelectUser = () => {
   const usersSelectList = users.data?.map((user) => (
     { value: user.userId.toString(), label: user.username }
   ));
-  console.log(usersSelectList);
   return (
     <div className='w-full my-4'>
       <div className='w-1/2 mx-auto'>
